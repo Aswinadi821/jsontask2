@@ -1,0 +1,86 @@
+{
+    "SessionID": "today's date plus hex",
+    "DataLineID": "MED12345",
+    "JobType": "Cohort",
+    "Details": {
+        "FilteringCoditions": {            
+            "UNIONComponents": {   
+                "UOperator":"UNION",             
+                "Conditions": [
+                    {
+                        "Component": "Demographics",
+                        "Conditions": {
+                            "Gender": [
+                                "Female"
+                            ],
+                            "Vital Status": [
+                                "Alive"
+                            ],
+                            "Ethinicity": [
+                                "All"
+                            ],
+                            "Age": {
+                                "MinAge": 30,
+                                "MaxAge": 200
+                            },
+                            "Race": [
+                                "ALL"
+                            ],
+                            "PrimaryLanguage": [
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "Component": "Diagnosis",
+                        "Conditions": {
+                            "HIMCode": [
+                                "Yes"
+                            ],
+                            "METSIndicator": [
+                                "Alive"
+                            ],
+                            "DiagnosisDate": {
+                                "MinDate": "01/01/2019",
+                                "MaxDate": "12/31/2021"
+                            },
+                            "ICD9CM": [
+                                "ABC01",
+                                "ABC02"
+                            ],
+                            "ICD10CM": [
+                                "DEF01",
+                                "DEF02"
+                            ]
+                        }
+                    }
+                ]
+            },
+            
+            "INTERSECTComponents": {
+                "IOperator": "INTERSECT"
+            },
+            
+            "EXCEPTComponents": {
+                "EOperator": "EXCEPT",
+                "Conditions": [
+                    {
+                        "Component": "Insurance",
+                        "Conditions": {
+                            "InsuranceName": [
+                                "Something"
+                            ],
+                            "FSCCode": [
+                                "123456"
+                            ],
+                            "FSCName": [
+                                "ABC01",
+                                "ABC02"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
