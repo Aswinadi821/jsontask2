@@ -8,7 +8,7 @@ def getjsonfunc(value1):
             comp_access= question_acess['FilteringCoditions']
             final_op = comp_access['UNIONComponents']
             with open("sample1.json", "w") as outfile:
-               json.dump(final_op, outfile)
+               json.dump(final_op, outfile, indent=2)
        elif value1 == 'Component:Demographics':
            question_acess = read_content['Details']
            comp_access = question_acess['FilteringCoditions']
@@ -16,7 +16,7 @@ def getjsonfunc(value1):
            demo_value = final_op['Conditions']
            final_op2= demo_value[0]
            with open("sample2.json", "w") as outfile2:
-               json.dump(final_op2, outfile2)
+               json.dump(final_op2, outfile2, indent=2)
        else:
            print('Data not found')
 getjsonfunc(value1)
