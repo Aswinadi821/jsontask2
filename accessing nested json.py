@@ -3,20 +3,16 @@ with open('med12345_20211116_235951.json') as  access_json:
     read_content=json.load(access_json)
 value1=input()
 def getjsonfunc(value1):
-       if value1 == 'Unioncomponents':
-            question_acess = read_content['Details']
-            comp_access= question_acess['FilteringCoditions']
-            final_op = comp_access['UNIONComponents']
-            with open("sample1.json", "w") as outfile:
-               json.dump(final_op, outfile, indent=2)
-       elif value1 == 'Component:Demographics':
-           question_acess = read_content['Details']
-           comp_access = question_acess['FilteringCoditions']
-           final_op = comp_access['UNIONComponents']
-           demo_value = final_op['Conditions']
-           final_op2= demo_value[0]
-           with open("sample2.json", "w") as outfile2:
-               json.dump(final_op2, outfile2, indent=2)
-       else:
-           print('Data not found')
+       for key, values in read_content.items():
+        if type(values) is str:
+            if val1==key:
+              yield(values)
+        elif type(values) is dict:
+              for key2, values2 in values.items():
+                if val1 == key2:
+                   yield(values2)
+                elif type(values2) is dict:
+                     for key3, values3 in values2.items():
+                        if val1 == key3:
+                           yield(values3)
 getjsonfunc(value1)
