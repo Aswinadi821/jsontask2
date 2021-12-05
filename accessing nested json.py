@@ -29,10 +29,12 @@ def getvaluebycomponent(read_content,val2,val3):
 
            elif type(value) is type(list()) and type(value[0]) is dict:
                 if (value[0][val2]) == val3:
-                      print(value[0])
+                    with open("sample1.json","w") as outfile:
+                      json.dump(value[0],outfile,indent=2)
 
                 elif (value[1][val2]) == val3:
-                    print(value[1])
+                    with open("sample1.json", "w") as outfile:
+                        json.dump(value[1], outfile,indent=2)
        except IndexError:
            print("Data not found in Intercept components")
 
