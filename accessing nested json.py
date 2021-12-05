@@ -1,7 +1,10 @@
 import json
+
 with open('med12345_20211116_235951.json') as  access_json:
     read_content=json.load(access_json)
-value1=input()
+val1=input()
+val2=input()
+val3=input()
 def getvaluebykey(read_content,val1):
     for key, value in read_content.items():
         if type(value) is dict:
@@ -16,5 +19,31 @@ def getvaluebykey(read_content,val1):
                     pass
                 else:
                     getvaluebykey(val,val1)
+
+def getvaluebycomponent(read_content,val2,val3):
+
+    for key,value in read_content.items():
+       try:
+           if type(value) is dict:
+              getvaluebycomponent(value,val2,val3)
+
+           elif type(value) is type(list()) and type(value[0]) is dict:
+                if (value[0][val2]) == val3:
+                      print(value[0])
+
+                elif (value[1][val2]) == val3:
+                    print(value[1])
+       except IndexError:
+           print("Data not found in Intercept components")
+
+           for val in value:
+                if type(val) is type(str()):
+                    pass
+                elif type(val) is type(list()):
+                    pass
+                else:
+                    getvaluebycomponent(val, val2,val3)
 getvaluebykey(read_content,val1)
+getvaluebycomponent(read_content,val2,val3)
+
 
