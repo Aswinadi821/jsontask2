@@ -1,1 +1,0 @@
-{"Component": "Demographics", "Conditions": {"Gender": ["Female"], "Vital Status": ["Alive"], "Ethinicity": ["All"], "Age": {"MinAge": 30, "MaxAge": 200}, "Race": ["ALL"], "PrimaryLanguage": ["ALL"]}}
