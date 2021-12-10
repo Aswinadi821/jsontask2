@@ -16,7 +16,7 @@ def getvaluebykey(read_content,val1):
                 if type(val) is type(str()):
                     pass
                 elif type(val) is type(list()):
-                    pass
+                    pass  # use recursive call in this line if the json structure has a nested list  
                 else:
                     getvaluebykey(val,val1)
 
