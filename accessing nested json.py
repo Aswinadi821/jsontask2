@@ -5,11 +5,10 @@ keyinput1 = input()
 keyinput2 = input()
 valueinput2 = input()
 class Json:
-            @staticmethod
-            def getvaluebykey(read_content,inpkeyvalue):
+            def getvaluebykey(self,read_content,inpkeyvalue):
                 for key, value in read_content.items():
                     if type(value) is dict:
-                        Json.getvaluebykey(value,inpkeyvalue)
+                        Json.getvaluebykey(self,value,inpkeyvalue)
                     elif inpkeyvalue==key:
                         print(value)
                     elif type(value) is type(list()):
@@ -19,14 +18,13 @@ class Json:
                             elif type(val) is type(list()):
                                 pass
                             else:
-                                Json.getvaluebykey(val,inpkeyvalue)
-            @staticmethod
-            def getvaluebycomponent(read_content,inp2key,inp2value):
+                                Json.getvaluebykey(self,val,inpkeyvalue)
+            def getvaluebycomponent(self,read_content,inp2key,inp2value):
 
                 for key,value in read_content.items():
                    try:
                        if type(value) is dict:
-                          Json.getvaluebycomponent(value,inp2key,inp2value)
+                          Json.getvaluebycomponent(self,value,inp2key,inp2value)
 
                        elif type(value) is type(list()) and type(value[0]) is dict:
                             if (value[0][inp2key]) == inp2value:
@@ -45,7 +43,7 @@ class Json:
                             elif type(val) is type(list()):
                                 pass
                             else:
-                                Json.getvaluebycomponent(val, inp2key,inp2value)
+                                Json.getvaluebycomponent(self,val, inp2key,inp2value)
 obj = Json()
 print(obj.getvaluebykey(read_content,keyinput1))
 obj.getvaluebycomponent(read_content,keyinput2,valueinput2)
