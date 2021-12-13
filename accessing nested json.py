@@ -33,7 +33,7 @@ class Json:
                            Json.getvaluebycomponent(self, val, inp2key, inp2value)
 
 obj = Json()
-print(obj.getvaluebykey(read_content,keyinput1))
+obj.getvaluebykey(read_content,keyinput1)
 obj.getvaluebycomponent(read_content,keyinput2,valueinput2)
 
 
