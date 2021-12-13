@@ -11,14 +11,7 @@ class Json:
                         Json.getvaluebykey(self,value,inpkeyvalue)
                     elif inpkeyvalue==key:
                         print(value)
-                    elif type(value) is type(list()):
-                        for val in value:
-                            if type(val) is type(str()):
-                                pass
-                            elif type(val) is type(list()):
-                                pass
-                            else:
-                                Json.getvaluebykey(self,val,inpkeyvalue)
+
             def getvaluebycomponent(self,read_content,inp2key,inp2value):
 
                 for key,value in read_content.items():
@@ -36,14 +29,9 @@ class Json:
                                     json.dump(value[1], outfile,indent=2)
                    except IndexError:
                        print("Data not found in Intercept components")
-
                        for val in value:
-                            if type(val) is type(str()):
-                                pass
-                            elif type(val) is type(list()):
-                                pass
-                            else:
-                                Json.getvaluebycomponent(self,val, inp2key,inp2value)
+                           Json.getvaluebycomponent(self, val, inp2key, inp2value)
+
 obj = Json()
 print(obj.getvaluebykey(read_content,keyinput1))
 obj.getvaluebycomponent(read_content,keyinput2,valueinput2)
